@@ -19,11 +19,13 @@ const Head = () => {
           onClick={() => toogleMenuHandler()}
         />
 
-        <img
-          className="h-8 mx-3 "
-          alt="youtube-logo"
-          src="https://cdn.worldvectorlogo.com/logos/youtube-6.svg"
-        />
+        <a href="/">
+          <img
+            className="h-8 mx-3 "
+            alt="youtube-logo"
+            src="https://cdn.worldvectorlogo.com/logos/youtube-6.svg"
+          />
+        </a>
       </div>
 
       <div className="flex h-9  ">

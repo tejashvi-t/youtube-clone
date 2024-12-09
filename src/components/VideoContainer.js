@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
+import { Link } from "react-router-dom";
 
 const GOOGLE_API_KEY = "AIzaSyBph4XWppDEdaWe2LS1PADR8bCc0sKkwOk";
 const YOUTUBE_VIDEO_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=+ ${GOOGLE_API_KEY}`;
@@ -32,7 +33,9 @@ const VideoContainer = () => {
     "
     >
       {videos.map((video) => (
-        <VideoCard key={video.id} info={video} />
+        <Link to={"/watch?v=" + video.id}>
+          <VideoCard key={video.id} info={video} />
+        </Link>
       ))}
     </div>
   );
