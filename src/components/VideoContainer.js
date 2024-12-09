@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
+import { YOUTUBE_VIDEO_API } from "../utils/constant";
 
-const GOOGLE_API_KEY = "AIzaSyBph4XWppDEdaWe2LS1PADR8bCc0sKkwOk";
-const YOUTUBE_VIDEO_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=+ ${GOOGLE_API_KEY}`;
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -21,7 +20,6 @@ const VideoContainer = () => {
       const jsonData = await result.json();
 
       setVideos(jsonData?.items);
-      console.log(jsonData?.items);
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
@@ -33,8 +31,8 @@ const VideoContainer = () => {
     "
     >
       {videos.map((video) => (
-        <Link to={"/watch?v=" + video.id}>
-          <VideoCard key={video.id} info={video} />
+        <Link key={video.id} to={"/watch?v=" + video.id}>
+          <VideoCard info={video} />
         </Link>
       ))}
     </div>
